@@ -1,0 +1,18 @@
+.ProductRow-missing {
+    color: red;
+}
+
+.ProductCategoryRow {
+    font-weight: bold;
+}
+
+.ProductTable {
+    margin: 5px 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.ProductTable td {
+    border: 1px solid grey;
+    padding: 2px;
+}

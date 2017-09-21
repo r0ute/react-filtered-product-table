@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import './ProductTable.css'
 
 function ProductRow(props) {
     return (
         <tr>
-            <td>{props.product.name}</td>
+            <td className={!props.product.stocked ? 'ProductRow-missing' : null}>{props.product.name}</td>
             <td>{props.product.price}</td>
         </tr>
     );
@@ -11,7 +12,7 @@ function ProductRow(props) {
 
 function ProductCategoryRow(props) {
     return (
-        <tr>
+        <tr className="ProductCategoryRow">
             <td colSpan="2">{props.category}</td>
         </tr>
     );

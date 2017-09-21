@@ -1,3 +1,7 @@
+.SearchBar {
+    margin: 5px 0;
+}
+
 .SearchBar-search {
     display: block;
 }
