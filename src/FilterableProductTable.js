@@ -1,10 +1,12 @@
-import React, {Component} from 'react'
-import ProductTable from './ProductTable'
+import React, {Component} from 'react';
+import ProductTable from './ProductTable';
+import SearchBar from './SearchBar';
 
 export default class FilterableProductTable extends Component {
     render() {
         return (
-            <div className="ProductTable">
+            <div className="FilterableProductTable">
+                <SearchBar/>
                 <ProductTable products={getProductsMap(this.props.products)}/>
             </div>
         );
