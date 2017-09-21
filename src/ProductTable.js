@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 function ProductRow(props) {
     return (
@@ -22,14 +22,14 @@ export default class ProductTable extends Component {
         const rows = [];
 
         this.props.products.forEach((products, category) => {
-            rows.push(<ProductCategoryRow category={category}/>);
+            rows.push(<ProductCategoryRow key={category} category={category}/>);
             rows.push(products.map((product) => {
-                return <ProductRow product={product}/>;
+                return <ProductRow key={product.name} product={product}/>;
             }));
         });
 
         return (
-            <table>
+            <table className="ProductTable">
                 <thead>
                 <tr>
                     <th>Name</th>
