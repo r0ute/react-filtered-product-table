@@ -22,7 +22,15 @@ export default class ProductTable extends Component {
     render() {
         const rows = [];
 
-        this.props.products.forEach((products, category) => {
+        this.props.products.reduce((map, product) => {
+            if (map.has(product.category)) {
+                map.get(product.category).push(product);
+            } else {
+                map.set(product.category, [product]);
+            }
+
+            return map;
+        }, new Map()).forEach((products, category) => {
             rows.push(<ProductCategoryRow key={category} category={category}/>);
             rows.push(products.map((product) => {
                 return <ProductRow key={product.name} product={product}/>;
@@ -38,7 +46,7 @@ export default class ProductTable extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                    {rows}
+                {rows}
                 </tbody>
             </table>
         );

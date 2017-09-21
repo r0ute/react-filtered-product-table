@@ -3,24 +3,27 @@ import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 
 export default class FilterableProductTable extends Component {
+    constructor() {
+        super();
+        this.state = {
+            filterText: 'Football',
+            inStockOnly: true
+        };
+    }
+
     render() {
         return (
             <div className="FilterableProductTable">
-                <SearchBar/>
-                <ProductTable products={getProductsMap(this.props.products)}/>
+                <SearchBar
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                />
+                <ProductTable
+                    products={this.props.products.filter((product) => {
+                        return product.name.indexOf(this.state.filterText) !== -1 && (!this.state.inStockOnly || product.stocked);
+                    })}
+                />
             </div>
         );
     }
-}
-
-function getProductsMap(products) {
-    return products.reduce((map, product) => {
-        if (map.has(product.category)) {
-            map.get(product.category).push(product);
-        } else {
-            map.set(product.category, [product])
-        }
-
-        return map;
-    }, new Map());
 }
