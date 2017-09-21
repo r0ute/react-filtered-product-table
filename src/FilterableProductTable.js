@@ -6,9 +6,21 @@ export default class FilterableProductTable extends Component {
     constructor() {
         super();
         this.state = {
-            filterText: 'Football',
-            inStockOnly: true
+            filterText: '',
+            inStockOnly: false
         };
+    }
+
+    handleFilterTextInput = (event) => {
+        this.setState({
+            filterText: event.target.value
+        });
+    }
+
+    handleInStockInput = (event) => {
+        this.setState({
+            inStockOnly: event.target.checked
+        });
     }
 
     render() {
@@ -17,6 +29,8 @@ export default class FilterableProductTable extends Component {
                 <SearchBar
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
+                    onFilterTextInput={this.handleFilterTextInput}
+                    onInStockInput={this.handleInStockInput}
                 />
                 <ProductTable
                     products={this.props.products.filter((product) => {
